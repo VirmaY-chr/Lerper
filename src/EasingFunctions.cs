@@ -33,7 +33,10 @@ namespace Virmay.Lerper
 
         InExpo,
         OutExpo,
-        InOutExpo
+        InOutExpo,
+
+        JSBPlayerElastic,
+        JSBPbInOutBack,
     }
 
     public static class EasingFunction
@@ -282,6 +285,45 @@ namespace Virmay.Lerper
             if (value < 1) return -0.5f * (a * MathF.Pow(2, 10 * (value -= 1)) * MathF.Sin((value * d - s) * (2 * MathF.PI) / p)) + start;
             return a * MathF.Pow(2, -10 * (value -= 1)) * MathF.Sin((value * d - s) * (2 * MathF.PI) / p) * 0.5f + end + start;
         }
+        public static float JSBPbInOutBack(float start, float end, float value)
+        {
+            float s = 0.5f;
+            end -= start;
+            value /= .5f;
+            if ((value) < 1)
+            {
+                s *= (1.525f);
+                return end * 0.5f * (value * value * (((s) + 1) * value - s)) + start;
+            }
+            value -= 2;
+            s *= (1.525f);
+            return end * 0.5f * ((value) * value * (((s) + 1) * value + s) + 2) + start;
+        }
+        public static float JSBPlayerElastic(float start, float end, float value)
+        {
+            float d = 2f;
+            float p = 0.2f;
+            float s;
+            float a = 3f;
+            start = 0;
+            end = 1;
+
+            if (value == 0) return start;
+
+            if ((value /= d) == 1) return start + end;
+
+            if (a == 0f || a < MathF.Abs(end))
+            {
+                a = end;
+                s = p * 0.25f;
+            }
+            else
+            {
+                s = p / (2 * MathF.PI) * MathF.Asin(end / a);
+            }
+
+            return (a * MathF.Pow(2, -10 * value) * MathF.Sin((value * d - s) * (2 * MathF.PI) / p) + end + start);
+        }
 
 
         public static float Calculate01(Ease easing, float value)
@@ -371,6 +413,13 @@ namespace Virmay.Lerper
                     break;
                 case Ease.InOutExpo:
                     calc = InOutExpo(0, 1, value);
+                    break;
+
+                case Ease.JSBPbInOutBack:
+                    calc = JSBPbInOutBack(0, 1, value);
+                    break;
+                case Ease.JSBPlayerElastic:
+                    calc = JSBPlayerElastic(0, 1, value);
                     break;
             }
             return calc;
