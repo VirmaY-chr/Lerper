@@ -36,5 +36,11 @@ namespace Virmay.Lerper
             foreach (var i in LerperCore.groups) return i.Value.FindAll(p);
             return null;
         }
+        //
+        public static void KillAllByTag(object tag)
+        {
+            var list = FindAll(x => x.tag == tag);
+            foreach (var i in list) i.Kill();
+        }
     }
 }
