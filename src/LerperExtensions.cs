@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Runtime.CompilerServices;
-using TMPro;
 
 namespace Virmay.Lerper
 {
@@ -14,27 +13,14 @@ namespace Virmay.Lerper
             transform.localScale = new Vector3(globalScale.x / transform.lossyScale.x, globalScale.y / transform.lossyScale.y, globalScale.z / transform.lossyScale.z);
         }
         //TRANSFORM =========================================================
-        //GLOBAL POSITION
         public static Vec3Lerper LerpGlobalPosition(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.position = x, e, d, group);
         public static Vec3Lerper LerpGlobalPosition(this Transform t, Vector3 e, float d, string group = null) =>
             new(t.position, x => t.position = x, e, d, group);
-        //LOCAL POSITION
         public static Vec3Lerper LerpPosition(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.localPosition = x, e, d, group);
         public static Vec3Lerper LerpPosition(this Transform t, Vector3 e, float d, string group = null) =>
             new(t.localPosition, x => t.localPosition = x, e, d, group);
-        //POSITION X
-        public static FloatLerper LerpPositionX(this Transform t, float s, float e, float d, string group = null) =>
-            new(s, x => t.localPosition = new Vector3(x, t.localPosition.y), e, d, group);
-        public static FloatLerper LerpPositionX(this Transform t, float e, float d, string group = null) =>
-            new(t.localPosition.x, x => t.localPosition = new Vector3(x, t.localPosition.y), e, d, group);
-        //POSITION Y
-        public static FloatLerper LerpPositionY(this Transform t, float s, float e, float d, string group = null) =>
-            new(s, y => t.localPosition = new Vector3(t.localPosition.x, y), e, d, group);
-        public static FloatLerper LerpPositionY(this Transform t, float e, float d, string group = null) =>
-            new(t.localPosition.y, y => t.localPosition = new Vector3(t.localPosition.x, y), e, d, group);
-        //GLOBAL SCALE
         public static Vec3Lerper LerpGlobalScale(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.SetGlobalScale(x), e, d, group);
         public static Vec3Lerper LerpGlobalScale(this Transform t, Vector3 e, float d, string group = null) =>
