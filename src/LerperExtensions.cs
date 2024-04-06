@@ -13,29 +13,29 @@ namespace Virmay.Lerper
             transform.localScale = new Vector3(globalScale.x / transform.lossyScale.x, globalScale.y / transform.lossyScale.y, globalScale.z / transform.lossyScale.z);
         }
         //TRANSFORM =========================================================
-        public static Vec3Lerper LerpPosition(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpGlobalPosition(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.position = x, e, d, group);
-        public static Vec3Lerper LerpPosition(this Transform t, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpGlobalPosition(this Transform t, Vector3 e, float d, string group = null) =>
             new(t.position, x => t.position = x, e, d, group);
-        public static Vec3Lerper LerpLocalPosition(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpPosition(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.localPosition = x, e, d, group);
-        public static Vec3Lerper LerpLocalPosition(this Transform t, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpPosition(this Transform t, Vector3 e, float d, string group = null) =>
             new(t.localPosition, x => t.localPosition = x, e, d, group);
-        public static Vec3Lerper LerpScale(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpGlobalScale(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.SetGlobalScale(x), e, d, group);
-        public static Vec3Lerper LerpScale(this Transform t, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpGlobalScale(this Transform t, Vector3 e, float d, string group = null) =>
             new(t.lossyScale, x => t.SetGlobalScale(x), e, d, group);
-        public static Vec3Lerper LerpLocalScale(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpScale(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.localScale = x, e, d, group);
-        public static Vec3Lerper LerpLocalScale(this Transform t, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpScale(this Transform t, Vector3 e, float d, string group = null) =>
             new(t.localScale, x => t.localScale = x, e, d, group);
-        public static Vec3Lerper LerpAngles(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpGlobalAngles(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.eulerAngles = x, e, d, group);
-        public static Vec3Lerper LerpAngles(this Transform t, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpGlobalAngles(this Transform t, Vector3 e, float d, string group = null) =>
             new(t.eulerAngles, x => t.eulerAngles = x, e, d, group);
-        public static Vec3Lerper LerpLocalAngles(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpAngles(this Transform t, Vector3 s, Vector3 e, float d, string group = null) =>
             new(s, x => t.localEulerAngles = x, e, d, group);
-        public static Vec3Lerper LerpLocalAngles(this Transform t, Vector3 e, float d, string group = null) =>
+        public static Vec3Lerper LerpAngles(this Transform t, Vector3 e, float d, string group = null) =>
             new(t.localEulerAngles, x => t.localEulerAngles = x, e, d, group);
         //SPRITE ============================================================
         //MATERIAL ==========================================================
