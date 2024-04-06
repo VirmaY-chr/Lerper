@@ -1,0 +1,19 @@
+{
+    "name": "com.virmay.lerper",
+    "author": "Virmay",
+    "displayName": "Lerper",
+    "description": "Primitive tweener with basic tweens, aimed at small size and better performance.",
+    "unity": "2022.3.15f1",
+    "version": "0.1.0",
+    "keywords": [
+        "lerper",
+        "tweener",
+        "unity",
+        "performance"
+    ],
+    "dependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/VirmaY-chr/lerper.git"
+    }
+}
