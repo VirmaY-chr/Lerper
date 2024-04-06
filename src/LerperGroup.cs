@@ -4,7 +4,7 @@ using Virmay.Lerper.Core;
 
 namespace Virmay.Lerper
 {
-    public class LerperGroup
+    public sealed class LerperGroup
     {
         readonly List<ILerper> lerpers;
         public ILerper this[int index] { get => lerpers[index]; set { lerpers[index] = value; } }

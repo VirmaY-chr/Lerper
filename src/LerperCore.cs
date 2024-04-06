@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Virmay.Lerper.Core
 {
-    public class LerperCore
+    public static class LerperCore
     {
         //public static readonly List<ILerper> pool = new(4096);
         static readonly Queue<ILerper> _queue = new(64);

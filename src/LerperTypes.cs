@@ -1,4 +1,5 @@
 using System.Text;
+using System;
 #if UNITY_64
 using UnityEngine;
 #endif
@@ -27,11 +28,8 @@ namespace Virmay.Lerper
 
         protected override void Set(float progress)
         {
-            //if (startValue != "")
-            //setter(endValue[..Mathf.RoundToInt(progress * length)] + (0 < progress && progress < 1 ? startValue : string.Empty));
-            //else setter(endValue[..Mathf.RoundToInt(progress * length)]);
-            sb.Append(endValue[..Mathf.RoundToInt(progress * length)]);
-            if (startValue != "" && 0 < progress && progress < 1) sb.Append(startValue);
+            sb.Append(endValue[..(int)(Math.Clamp(progress, 0, 1) * length)]);
+            if (!string.Equals(startValue, "") && 0 < progress && progress < 1) sb.Append(startValue);
             setter(sb.ToString());
             sb.Clear();
         }
